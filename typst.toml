@@ -1,0 +1,10 @@
+[package]
+name = "ls_ppt"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["zengls"]
+license = "MIT"
+
+[template]
+path = "template"
+entrypoint = "main.typ"
