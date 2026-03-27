@@ -25,6 +25,14 @@
   ..args,
   body,
 ) = {
+  let palette = (
+    primary: rgb("#1D4E89"),
+    primary-soft: rgb("#3C78B2"),
+    accent: rgb("#0E7490"),
+    neutral-darkest: rgb("#0F1F33"),
+    neutral-lightest: rgb("#F4F8FC"),
+  )
+
   set text(lang: lang, font: font)
   show: if lang == "zh" {
     import "@preview/cuti:0.3.0": show-cn-fakebold
@@ -43,7 +51,10 @@
     ),
     ..args,
     config-colors(
-      primary: rgb("#3f4ed3"),
+      primary: palette.primary,
+      secondary: palette.accent,
+      neutral-darkest: palette.neutral-darkest,
+      neutral-lightest: palette.neutral-lightest,
     ),
     config-page(),
     config-methods(),
@@ -51,7 +62,7 @@
       navigation: self => components.simple-navigation(
         self: self,
         primary: white,
-        secondary: gray,
+        secondary: self.colors.neutral-lightest,
         background: self.colors.neutral-darkest,
         logo: utils.call-or-display(self, self.store.header-right),
       ),
@@ -84,9 +95,9 @@
           columns: self.store.footer-columns,
           rows: (1.5em, auto),
           cell(fill: self.colors.neutral-darkest, utils.call-or-display(self, self.store.footer-a)),
-          cell(fill: self.colors.neutral-darkest, utils.call-or-display(self, self.store.footer-b)),
+          cell(fill: self.colors.primary, utils.call-or-display(self, self.store.footer-b)),
           cell(fill: self.colors.primary, utils.call-or-display(self, self.store.footer-c)),
-          cell(fill: self.colors.primary, utils.call-or-display(self, self.store.footer-d)),
+          cell(fill: self.colors.secondary, utils.call-or-display(self, self.store.footer-d)),
         )
       },
     ),
@@ -116,7 +127,7 @@
   depth: 2,
   text-size: (1.3em, 1em),
   text-weight: ("bold", "regular"),
-  text-fill: (rgb("#2E86AB"), rgb("#A23B72")),
+  text-fill: (rgb("#1D4E89"), rgb("#0E7490")),
   indent: (0em, 2em),
   vspace: (1em, 0.3em),
 )
