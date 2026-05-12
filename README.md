@@ -1,3 +1,6 @@
+## NENU PPT Template
+
+---
 
 ## Quick start
 
@@ -20,5 +23,5 @@ cd ppt-typst-template
 ### Usage
 
 ```bash
-typst init @local/ls_ppt:0.1.0
+typst init @local/ls_ppt:0.1.0 ppt_dir_name
 ```
