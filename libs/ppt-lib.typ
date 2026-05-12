@@ -40,9 +40,10 @@
   } else {
     it => it
   }
+  set bibliography(style: "utils/nenu-cite-format.csl")
 
-  show heading.where(level: 1): set heading(numbering: "1.")
-  show heading.where(level: 2): set heading(numbering: "1.")
+  // show heading.where(level: 1): set heading(numbering: "1.")
+  // show heading.where(level: 2): set heading(numbering: "1.")
 
   show: stargazer-theme.with(
     aspect-ratio: aspect-ratio,
@@ -124,10 +125,39 @@
 
 #let outline-slide = outline-slide.with(
   title: [目录],
-  depth: 2,
-  text-size: (1.3em, 1em),
+  depth: 1,
+  text-size: (1.1em, 0.8em),
   text-weight: ("bold", "regular"),
   text-fill: (rgb("#1D4E89"), rgb("#0E7490")),
   indent: (0em, 2em),
   vspace: (1em, 0.3em),
 )
+
+
+#let thanks_page(content, background: rgb("#4074b4"), font-color: white) = {
+  slide(title: none, config: config-page(fill: background))[
+    #align(center + horizon)[
+      #stack(
+        spacing: 0.85em,
+        text(size: 2em, fill: font-color)[#content],
+      )
+    ]
+  ]
+}
+
+
+#let card(accent: rgb("#1e5bc7"), title, ..body-args) = {
+  let body = body-args.pos().join()
+  block(
+    width: 100%,
+    inset: (left: 0.55em, y: 0.65em, right: 0.65em),
+    stroke: (left: 3.5pt + accent),
+    fill: accent.lighten(92%),
+    radius: 4pt,
+    breakable: false,
+  )[
+    #set text(size: 0.92em)
+    #text(weight: "bold", fill: accent.darken(12%))[#title]\
+    #body
+  ]
+}

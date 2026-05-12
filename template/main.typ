@@ -1,6 +1,6 @@
 #import "@preview/touying:0.6.1": *
 #import "@preview/cetz:0.4.1"
-#import "@preview/fletcher:0.5.8" as fletcher: edge, node
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/theorion:0.4.0": *
 #import cosmos.clouds: *
@@ -8,8 +8,9 @@
 #import themes.university: *
 #import themes.stargazer: *
 #import "@preview/embiggen:0.0.1": *
+
 #import "@local/ls_ppt:0.1.0" as ls_ppt:
-#import ls_ppt.ppt-lib: outline-slide, ppt-theme
+#import ls_ppt.ppt-lib: card, outline-slide, ppt-theme, thanks_page
 
 // cetz and fletcher bindings for touying
 #let cetz-canvas = touying-reducer.with(reduce: cetz.canvas, cover: cetz.draw.hide.with(bounds: true))
@@ -192,6 +193,11 @@ Fletcher Animation in Touying:
 ]
 
 
+== Citation example
+
+正文里用 @example2023demo 与 @knuth1984texbook 插入引用（样式由 `ppt-theme` 里的 `#set bibliography(style: ...)` 与 CSL 决定）。文末附录幻灯片列出 `#bibliography` 生成的文献表。@example2023demo @knuth1984texbook
+
+
 == Multiple Pages
 
 #lorem(200)
@@ -204,3 +210,9 @@ Fletcher Animation in Touying:
 == Appendix
 
 Please pay attention to the current slide number.
+
+== 参考文献
+
+#bibliography("ref.bib", title: none)
+
+#thanks_page()[谢谢大家]
